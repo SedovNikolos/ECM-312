@@ -1,0 +1,18 @@
+setwd("/home/user/Документы/ECM-312")
+mytable<-read.table("Azerbaijan.csv",header=TRUE,sep=",")
+mytable
+ymax<-max(mytable[][2:8])
+ymax
+names(mytable)
+attach(mytable)
+chars=c("Терроризм","Террорист","Оккупация","Наркотики","Насилие","Демократия","Развитие")
+png(filename="Azerbaijan.png",units="px",width=1200,res=96,pointsize=12,family="serif")
+plot(Year,terrorism,xlab="Год",ylab="Количество упоминаний",main="Частота упоминаний, характеристик для Азербайджана",pch=15,col="blue",type="b",xlim=c(2000,2015),ylim=c(0,ymax))
+lines(Year,terrorist,pch=16,col="green",type="b", xlim=c(2000,2014),ylim=c(0,ymax))
+lines(Year,occupation,pch=17,col="black",type="b", xlim=c(2000,2014),ylim=c(0,ymax))
+lines(Year,narcotic,pch=18,col="red",type="b", xlim=c(2000,2014),ylim=c(0,ymax))
+lines(Year,violation,pch=19,col="yellow",type="b", xlim=c(2000,2014),ylim=c(0,ymax))
+lines(Year,democracy,pch=20,col="violet",type="b", xlim=c(2000,2014),ylim=c(0,ymax))
+lines(Year,development,pch=21,col="orange",type="b", xlim=c(2000,2014),ylim=c(0,ymax))
+legend ("toplef",inset=.01,title="Характеристики",chars,lty=c(1,1),pch=c(15,16,17,18,19,20,21),col=c("blue","green","black","red","yellow","violet","orange"))
+dev.off()
